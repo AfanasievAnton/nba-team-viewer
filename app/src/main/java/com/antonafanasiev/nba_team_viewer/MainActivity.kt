@@ -2,21 +2,37 @@ package com.antonafanasiev.nba_team_viewer
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import okhttp3.*
+import java.io.IOException
+
+const val URL = "https://raw.githubusercontent.com/scoremedia/nba-team-viewer/master/input.json"
 
 class MainActivity : AppCompatActivity() {
+    private val client = OkHttpClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            val request: Request = Request.Builder()
+                .url(URL)
+                .build()
+            client.newCall(request)
+                .enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        println("response: onFailure")
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        val responseJson = response.body!!.string()
+                        println("team value: $responseJson")
+                    }
+                })
         }
     }
 
