@@ -5,6 +5,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.antonafanasiev.nba_team_viewer.model.Team
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import okhttp3.*
 import java.io.IOException
 
@@ -29,8 +32,10 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(call: Call, response: Response) {
-                        val responseJson = response.body!!.string()
-                        println("team value: $responseJson")
+                        val teams = response.body!!.string().let {
+                            Json.decodeFromString<List<Team>>(it)
+                        }
+                        println("team value: $teams")
                     }
                 })
         }
