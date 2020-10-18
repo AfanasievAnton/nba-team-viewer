@@ -1,10 +1,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.antonafanasiev.nba_team_viewer.MainActivity">
+    tools:context="com.antonafanasiev.nba_team_viewer.view.MainActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="@string/sort_teams_by"
+        app:showAsAction="never">
+
+        <menu>
+            <item
+                android:id="@+id/sort_alphabetical"
+                android:checked="true"
+                android:title="@string/alphabetical" />
+            <item
+                android:id="@+id/sort_by_wins"
+                android:title="@string/wins_label" />
+            <item
+                android:id="@+id/sort_by_loses"
+                android:title="@string/loses_label" />
+
+        </menu>
+    </item>
 </menu>

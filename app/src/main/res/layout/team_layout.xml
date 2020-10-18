@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="teamData"
+            type="com.antonafanasiev.nba_team_viewer.model.Team" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/team_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_20dp">
+
+        <TextView
+            android:id="@+id/team_name"
+            style="@style/BaseTableTextView"
+            android:layout_weight="3"
+            android:text="@{teamData.fullName}" />
+
+        <TextView
+            android:id="@+id/wins"
+            style="@style/BaseTableTextView"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@{Integer.toString(teamData.wins)}"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/loses"
+            style="@style/BaseTableTextView"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@{Integer.toString(teamData.losses)}"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+</layout>

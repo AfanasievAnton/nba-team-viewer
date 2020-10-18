@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.antonafanasiev.nba_team_viewer.viewmodel.TeamViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.TeamsFragment">
+
+
+
+        <TextView
+            android:id="@+id/tv_leaderboard"
+            style="@style/FragmentHeader"
+            android:text="@string/nba_league_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_teams_raw_cotainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_leaderboard">
+
+            <TextView
+                android:id="@+id/team_name"
+                style="@style/BaseTableTextView"
+                android:layout_weight="3"
+                android:text="@string/team_name_label"
+                android:textSize="@dimen/_18sp" />
+
+            <TextView
+                android:id="@+id/wins"
+                style="@style/BaseTableTextView"
+                android:layout_weight="1"
+                android:text="@string/wins_label"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                style="@style/BaseTableTextView"
+                android:layout_weight="1"
+                android:text="@string/loses_label"
+                android:textSize="@dimen/_18sp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/teams_recycleview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_teams_raw_cotainer" />
+
+        <TextView
+            android:id="@+id/tv_error_message"
+            style="@style/FragmentHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
