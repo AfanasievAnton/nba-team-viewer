@@ -1,98 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.PlayersFragment">
 
-    <data>
+    <TextView
+        android:id="@+id/tv_team_name"
+        style="@style/FragmentHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <import type="android.view.View" />
+    <TextView
+        android:id="@+id/tv_wins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginLeft="@dimen/_20dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:text="@string/wins_label"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="@dimen/_18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_team_name" />
 
-        <variable
-            name="playersData"
-            type="com.antonafanasiev.nba_team_viewer.model.Player" />
+    <TextView
+        android:id="@+id/tv_loses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:text="@string/loses_label"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/_18sp"
+        app:layout_constraintStart_toStartOf="@id/tv_wins"
+        app:layout_constraintTop_toBottomOf="@id/tv_wins" />
 
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        android:id="@+id/ll_raw_cotainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.fragments.PlayersFragment">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_20dp"
+        app:layout_constraintStart_toStartOf="@id/tv_loses"
+        app:layout_constraintTop_toBottomOf="@id/tv_loses">
 
         <TextView
-            android:id="@+id/tv_team_name"
-            style="@style/FragmentHeader"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/team_name"
+            style="@style/BaseTableTextView"
+            android:layout_weight="3"
+            android:text="@string/player_name_label"
+            android:textSize="@dimen/_18sp" />
 
         <TextView
-            android:id="@+id/tv_wins"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_20dp"
-            android:layout_marginStart="@dimen/_20dp"
-            android:layout_marginTop="@dimen/_10dp"
-            android:text="@string/wins_label"
-            android:textColor="@android:color/holo_green_dark"
+            android:id="@+id/wins"
+            style="@style/BaseTableTextView"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/player_position_label"
             android:textSize="@dimen/_18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_team_name" />
+
+            />
 
         <TextView
-            android:id="@+id/tv_loses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
-            android:text="@string/loses_label"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="@dimen/_18sp"
-            app:layout_constraintStart_toStartOf="@id/tv_wins"
-            app:layout_constraintTop_toBottomOf="@id/tv_wins" />
+            style="@style/BaseTableTextView"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/player_number_label"
+            android:textSize="@dimen/_18sp" />
 
-        <LinearLayout
-            android:id="@+id/ll_raw_cotainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_20dp"
-            app:layout_constraintStart_toStartOf="@id/tv_loses"
-            app:layout_constraintTop_toBottomOf="@id/tv_loses">
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/team_name"
-                style="@style/BaseTableTextView"
-                android:layout_weight="3"
-                android:text="@string/player_name_label"
-                android:textSize="@dimen/_18sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_players"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_raw_cotainer" />
 
-            <TextView
-                android:id="@+id/wins"
-                style="@style/BaseTableTextView"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="@string/player_position_label"
-                android:textSize="@dimen/_18sp"
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-                />
-
-            <TextView
-                style="@style/BaseTableTextView"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/player_number_label"
-                android:textSize="@dimen/_18sp" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_players"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_raw_cotainer" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
