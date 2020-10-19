@@ -1,10 +1,6 @@
 package com.antonafanasiev.nba_team_viewer.view.adapters
 
 import com.antonafanasiev.nba_team_viewer.model.Player
-import com.antonafanasiev.nba_team_viewer.view.adapters.viewholders.PlayersViewHolder
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.same
-import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 import org.junit.Assert.assertEquals
 
@@ -15,17 +11,6 @@ class PlayersAdapterTest {
     private val players = listOf(player1, player2)
     private val subject = PlayersAdapter(players)
 
-    @Test
-    fun `when bindViewHolder() called then bind expected player object`() {
-        //Given
-        val givenMockViewHolder = mock<PlayersViewHolder>()
-
-        //When
-        subject.bindViewHolder(mock(), 1)
-
-        //Then
-        verify(givenMockViewHolder).bindPlayer(same(players[1]))
-    }
 
     @Test
     fun `when itemCount called then return size of players list`() {
