@@ -19,7 +19,7 @@
     <string name="player_position_label">Position</string>
     <string name="player_name_label">Player</string>
     <string name="team_name_label">Team</string>
-    <string name="team_wins">Wins: %1$d</string>
-    <string name="team_losses">Loses: %1$d</string>
+    <string name="team_wins_placeholder">Wins: %1$d</string>
+    <string name="team_losses_placeholder">Loses: %1$d</string>
 
 </resources>

@@ -34,8 +34,8 @@ class PlayersFragment : Fragment() {
 
     private fun updateTextViews(team: Team) {
         tv_team_name.text = team.fullName
-        tv_wins.text = getString(R.string.team_wins, team.wins)
-        tv_loses.text = getString(R.string.team_losses, team.losses)
+        tv_wins.text = getString(R.string.team_wins_placeholder, team.wins)
+        tv_loses.text = getString(R.string.team_losses_placeholder, team.losses)
     }
 
     private fun setupAdapter(playersList: List<Player>) {

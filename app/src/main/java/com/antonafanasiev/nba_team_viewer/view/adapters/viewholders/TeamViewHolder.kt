@@ -12,7 +12,9 @@ class TeamViewHolder constructor(
 
     fun onBind(team: Team, onTeamClickListener: TeamsAdapter.OnTeamClickListener) {
         dataBinding.setVariable(BR.teamData, team)
-        dataBinding.root.setOnClickListener{ onTeamClickListener.onClick(team)}
+        dataBinding.root.setOnClickListener{
+            onTeamClickListener.onClick(team)
+        }
         dataBinding.executePendingBindings()
     }
 }
