@@ -32,15 +32,15 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> true
             R.id.sort_alphabetical -> {
-                viewModel.sort(type = SortingType.Alphabetical)
+                viewModel.sortBy(SortingType.Alphabetical)
                 true
             }
             R.id.sort_by_wins -> {
-                viewModel.sort(type = SortingType.Wins)
+                viewModel.sortBy(SortingType.Wins)
                 true
             }
             R.id.sort_by_loses -> {
-                viewModel.sort(type = SortingType.Loses)
+                viewModel.sortBy(SortingType.Loses)
                 true
             }
             else -> super.onOptionsItemSelected(item)

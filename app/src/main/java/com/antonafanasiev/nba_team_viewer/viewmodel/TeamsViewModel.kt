@@ -20,28 +20,34 @@ class TeamViewModel(private val client: NetworkClient) : ViewModel() {
     val errorMessage = MutableLiveData<String>()
 
 
-    fun fetchTeams() = client.request(URL, { onSuccess(it) }, { onFail(it) })
+    fun fetchTeams() =
+        client.request(URL,
+            { onSuccess(it) },
+            { onFail(it) })
 
     private fun onSuccess(response: Response) {
         val teams: List<Team> =
             response.body!!.string().let { Json.decodeFromString(it) }
-        sort(teams, preferredSortType)
+        teamsListLive.postValue(sortTeam(teams))
     }
 
     private fun onFail(e: IOException) {
         errorMessage.postValue(e.message)
     }
 
-    fun sort(team: List<Team>? = teamsListLive.value, type: SortingType) {
+    fun sortBy(type: SortingType) {
+        if (preferredSortType == type) return
         preferredSortType = type
-        val sortedTeams = when (preferredSortType) {
-            SortingType.Alphabetical -> team?.sortedBy { it.fullName }
-            SortingType.Wins -> team?.sortedByDescending { it.wins }
-            SortingType.Loses -> team?.sortedByDescending { it.losses }
+        teamsListLive.value?.run {
+            teamsListLive.postValue(sortTeam(this))
         }
+    }
 
-        sortedTeams?.let {
-            teamsListLive.postValue(it)
+    private fun sortTeam(team: List<Team>): List<Team> {
+        return when (preferredSortType) {
+            SortingType.Alphabetical -> team.sortedBy { it.fullName }
+            SortingType.Wins -> team.sortedByDescending { it.wins }
+            SortingType.Loses -> team.sortedByDescending { it.losses }
         }
     }
 }
