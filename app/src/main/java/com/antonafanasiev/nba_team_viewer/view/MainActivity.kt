@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     // foo
     private lateinit var viewModel: TeamViewModel
 
+    // bar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
