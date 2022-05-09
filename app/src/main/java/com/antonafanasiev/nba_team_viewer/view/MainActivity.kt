@@ -14,7 +14,6 @@ import com.antonafanasiev.nba_team_viewer.viewmodel.TeamViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    // foo
     private lateinit var viewModel: TeamViewModel
 
     // bar
