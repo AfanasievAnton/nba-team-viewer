@@ -23,11 +23,13 @@ class MainActivity : AppCompatActivity() {
         createViewModel()
     }
 
+    // boo
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
+    // burp
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> true
