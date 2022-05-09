@@ -8,7 +8,6 @@ import com.antonafanasiev.nba_team_viewer.model.Player
 
 class PlayersViewHolder(layout: View) : RecyclerView.ViewHolder(layout) {
 
-    // Advance master
     fun bindPlayer(player: Player) {
         itemView.findViewById<TextView>(R.id.tv_player_name).text =
             "${player.firstName} ${player.lastName}"
