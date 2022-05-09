@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.players_fragment.*
  */
 class PlayersFragment : Fragment() {
 
+    // another foo
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
