@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.teams_fragment.*
  */
 class TeamsFragment : Fragment(), TeamsAdapter.OnTeamClickListener {
 
+    // From feature branch
     private lateinit var teamsDataBinding: TeamsFragmentBinding
     private lateinit var adapter: TeamsAdapter
     private val viewModel: TeamViewModel by activityViewModels()
