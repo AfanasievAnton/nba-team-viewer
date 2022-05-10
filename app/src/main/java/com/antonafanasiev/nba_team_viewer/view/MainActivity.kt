@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         createViewModel()
     }
 
+    // Changes on "B" from master
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
