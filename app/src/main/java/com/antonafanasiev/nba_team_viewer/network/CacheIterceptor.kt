@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit
 
 class CacheInterceptor : Interceptor {
 
-    // Hi
     override fun intercept(chain: Interceptor.Chain): Response {
         val response = chain.proceed(chain.request())
 
