@@ -15,6 +15,7 @@ class PlayersAdapter(private val playersList: List<Player>) :
         return PlayersViewHolder(layout)
     }
 
+    // Changes from dev
     override fun onBindViewHolder(holder: PlayersViewHolder, position: Int) {
        holder.bindPlayer(playersList[position])
     }
