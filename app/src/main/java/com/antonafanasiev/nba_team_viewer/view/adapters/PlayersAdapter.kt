@@ -10,6 +10,7 @@ import com.antonafanasiev.nba_team_viewer.view.adapters.viewholders.PlayersViewH
 class PlayersAdapter(private val playersList: List<Player>) :
     RecyclerView.Adapter<PlayersViewHolder>() {
 
+    // Changes on "C" from dev
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayersViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.players_layout, parent, false)
         return PlayersViewHolder(layout)
